@@ -16,11 +16,11 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
     
 
-    public Page<Employee> findAllEmployees(int offset, int pageSize){
+    public Page<Employee> getAllEmployees(int offset, int pageSize){
 		 return employeeRepository.findAll(PageRequest.of(offset, pageSize));    	
     }
     
-    public Page<Employee> findEmployees(int offset, int pageSize,String field){
+    public Page<Employee> getEmployees(int offset, int pageSize,String field){
 		return employeeRepository.findAll(PageRequest.of(offset, pageSize).withSort(Direction.ASC, field));  	
     }
     

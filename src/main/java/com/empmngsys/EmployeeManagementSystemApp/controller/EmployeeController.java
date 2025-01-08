@@ -22,12 +22,12 @@ public class EmployeeController {
 	    
 	    @GetMapping("/employees/{offset}/{pageSize}")
 	    public Page<Employee> getAllEmployees(@PathVariable int offset, @PathVariable int pageSize) {
-	    	return employeeService.findAllEmployees(offset, pageSize);
+	    	return employeeService.getAllEmployees(offset, pageSize);
 	    }    
 	    
-	    @GetMapping("/employees/{offset}/{pageSize}/{field}")
+	    @GetMapping("/employeesSort/{offset}/{pageSize}/{field}")
 	    public Page<Employee> getEmployees(@PathVariable int offset, @PathVariable int pageSize, @PathVariable String field) {
-	    	return employeeService.findEmployees(offset, pageSize, field);
+	    	return employeeService.getEmployees(offset, pageSize, field);
 	    } 
 	    
 	    @PostMapping("/employee")
