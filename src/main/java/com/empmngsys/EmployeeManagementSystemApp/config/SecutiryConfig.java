@@ -30,16 +30,16 @@ public class SecutiryConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
-		http
-			.csrf(customizer-> customizer.disable())
-			.authorizeHttpRequests(request -> request
+		return http
+				.csrf(customizer-> customizer.disable())
+				.authorizeHttpRequests(request -> request
 					.requestMatchers("register","login")
 					.permitAll()
 					.anyRequest().authenticated())
-			.httpBasic(Customizer.withDefaults())
-			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-			.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-		return http.build();		
+				.httpBasic(Customizer.withDefaults())
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+		       		.build();		
 	}
 	
 	@Bean
